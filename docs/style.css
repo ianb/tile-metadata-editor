@@ -1,0 +1,26 @@
+html,
+body {
+  font-family: sans-serif;
+}
+
+table.tiles {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table.tiles td {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  line-height: 0;
+}
+
+table.tiles img {
+  padding: 0;
+  margin: 0;
+}
+
+table.tiles img:hover {
+  outline: 2px solid rgba(128, 255, 128, 0.3);
+  cursor: pointer;
+}
