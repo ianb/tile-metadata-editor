@@ -49,6 +49,7 @@
     "stylelint-prettier": "^1.1.2"
   },
   "dependencies": {
+    "mousetrap": "^1.6.5",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   },
@@ -65,9 +66,9 @@
     "test": "npm-run-all build:manifest lint jest",
     "jest": "jest",
     "build": "npm-run-all build:*",
-    "build:deps": "mkdir -p docs/build/vendor/ ; for file in react/umd/react.production.min.js react-dom/umd/react-dom.production.min.js ; do cp node_modules/$file docs/build/vendor/ ; done",
+    "build:deps": "mkdir -p docs/build/vendor/ ; for file in react/umd/react.production.min.js react-dom/umd/react-dom.production.min.js mousetrap/mousetrap.js ; do cp node_modules/$file docs/build/vendor/ ; done",
     "build:jsx": "babel --relative --out-dir ./build --only '**/*.jsx' docs/",
-    "watch-rebuild": "npm-run-all build:jsx",
+    "watch-rebuild": "npm-run-all build:jsx && terminal-notifier -message \"JSX rebuilt\" || terminal-notifier -message \"JSX failed\"",
     "watch": "nodemon --on-change-only -e jsx,ejs --exec 'npm run watch-rebuild'",
     "maybeinstall": "if [[ package.json -nt node_modules/last_install.txt ]] ; then npm install && touch node_modules/last_install.txt ; fi",
     "format": "prettier 'extension/**/*.{js,jsx,css}' --write",

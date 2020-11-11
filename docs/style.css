@@ -1,11 +1,25 @@
 html,
 body {
   font-family: sans-serif;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overscroll-behavior-x: none;
+}
+
+label {
+  margin-left: 0.75em;
 }
 
 table.tiles {
   border-collapse: collapse;
   border-spacing: 0;
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%),
+    linear-gradient(-45deg, #ddd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd 75%),
+    linear-gradient(-45deg, transparent 75%, #ddd 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
 table.tiles td {
@@ -23,4 +37,216 @@ table.tiles img {
 table.tiles img:hover {
   outline: 2px solid rgba(128, 255, 128, 0.3);
   cursor: pointer;
+}
+
+label.selected {
+  background-color: #33a;
+  color: #fff;
+}
+
+div.radios label {
+  padding: 1px 3px;
+  margin: 0 3px;
+  border-radius: 3px;
+  border: 1px solid #fff;
+}
+
+div.radios label:hover {
+  border: 1px solid #33a;
+}
+
+.tile-dir {
+  cursor: pointer;
+}
+
+.tile-dir:hover {
+  opacity: 0.8;
+}
+
+.special-tiles li {
+  list-style: none;
+  margin-left: 0;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.special-tiles li:hover {
+  background-color: #ddd;
+}
+
+img.group-tile {
+  outline: 2px solid #6f6;
+}
+
+/* Animating tiles */
+
+.anim-tiles {
+  display: inline-block;
+  position: relative;
+  height: 32px;
+  width: 32px;
+}
+
+.anim-tiles.x2 {
+  height: 64px;
+  width: 64px;
+}
+
+.x2 .image-1-of-2,
+.x2 .image-2-of-2,
+.x2 .image-1-of-3,
+.x2 .image-2-of-3,
+.x2 .image-3-of-3,
+.x2 .image-1-of-4,
+.x2 .image-2-of-4,
+.x2 .image-3-of-4,
+.x2 .image-4-of-4 {
+  height: 64px;
+  width: 64px;
+}
+
+img.x2 {
+  height: 64px;
+  width: 64px;
+}
+
+.image-1-of-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-2-of-2 {
+  position: absolute;
+  animation: FadeIn12 2s infinite normal step-start;
+}
+
+.image-1-of-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-2-of-3 {
+  position: absolute;
+  animation: FadeIn13 3s infinite normal step-start;
+}
+
+.image-3-of-3 {
+  position: absolute;
+  animation: FadeIn23 3s infinite normal step-start;
+}
+
+.image-1-of-4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-2-of-4 {
+  position: absolute;
+  animation: FadeIn14 4s infinite normal step-start;
+}
+
+.image-3-of-4 {
+  position: absolute;
+  animation: FadeIn24 4s infinite normal step-start;
+}
+
+.image-4-of-4 {
+  position: absolute;
+  animation: FadeIn34 4s infinite normal step-start;
+}
+
+@keyframes FadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes FadeIn12 {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes FadeIn13 {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes FadeIn23 {
+  0% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes FadeIn14 {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes FadeIn24 {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+
+@keyframes FadeIn34 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
